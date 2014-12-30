@@ -17,6 +17,7 @@
     </div>
    
     
+    <p>Those are your message</p>
     <div id='messagesDiv'></div>
     <form action="test_submit" method="get" accept-charset="utf-8">
       <input type='text' id='nameInput' placeholder='Name'>
@@ -36,6 +37,18 @@
           myDataRef.on('child_added', function(snapshot) {
             var message = snapshot.val();
             if (message.name == $('#who').val()){
+              displayChatMessage(message.name, message.text);
+            }
+          });
+        }
+      });
+      
+      $('#chat').keypress(function (e) {
+        if (e.keyCode == 13) {
+          $('#messagesDiv').html('')
+          myDataRef.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            if (message.name == $('#who').val() && message.chat == $('#chat').val()){
               displayChatMessage(message.name, message.text);
             }
           });

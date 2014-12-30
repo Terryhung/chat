@@ -1,20 +1,11 @@
 <html>
   <head>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/listmember.js" type="text/javascript" charset="utf-8"></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <style type="text/css" media="screen">
-      .youcansee{
-        visibility: visible;
-      }
-      .youcantsee{
-        visibility: hidden;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -29,13 +20,13 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form class="navbar-form navbar-left" role="search" action="">
+          <form class="navbar-form navbar-left" role="" action="">
             <div class="form-group">
               <input type='text' id='who' class="form-control" placeholder='Name'>
-              <input type='password' id='passwd' class="form-control" placeholder='Passsword'>
+              <input type='text' id='passwd' class="form-control" placeholder='Passsword'>
             </div>
             <button class="btn btn-default" id="createaccount">Create Account</button>
-            <button class="btn btn-default" id="login">Login</button>
+            <button class="btn btn-default" id="login_123">Login</button>
           </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -46,7 +37,7 @@
 
         <!-- who are you?-->
         <div id="memberlist" class="name">
-          <p>who you want to chat?</p>
+          <p class="sub_title">who wants to chat with you?</p>
           <button id="listall" class="btn btn-default">List member</button>
           <div id='memberDiv'></div>
         </div>
@@ -59,7 +50,7 @@
 
       </div>
       <div class="col-md-4" style="padding-left: 5%; padding-top: 50px">
-        <p>Those are your message</p>
+        <p class="sub_title">Message</p>
         <div id='messagesDiv'></div>
         <input type='text' id='messageInput' placeholder='Message'>
       </div>

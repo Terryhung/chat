@@ -1,5 +1,5 @@
 $(document).ready(function() {
-var myDataRef = new Firebase('https://blistering-heat-1919.firebaseio.com/');
+      var myDataRef = new Firebase('https://blistering-heat-1919.firebaseio.com/');
       <!-- this is test -->
       $('#who').keypress(function (e) {
         if (e.keyCode == 13) {
@@ -17,25 +17,12 @@ var myDataRef = new Firebase('https://blistering-heat-1919.firebaseio.com/');
           $('#messagesDiv').html('')
           myDataRef.on('child_added', function(snapshot) {
             var message = snapshot.val();
-            if ((message.name == $('#who').val() && message.chat == $('#chat').val()) || (message.chat == $('#who').val() && message.name == $('#chat').val())){
-              displayChatMessage(message.name, message.text);
-            }
+            if (message.name == $('#who').val() && message.chat == $('#chat').val()) {
+              displayChatMessage(message.name, message.text, 'my_right');
+            } else if(message.chat == $('#who').val() && message.name == $('#chat').val()){
+              displayChatMessage(message.name, message.text, 'my_left');
+            };
           });
-        }
-      });
-
-      $('#listall').click(function(){
-        var member = "hi";
-        console.log(member)
-        myDataRef.on('child_added', function(snapshot) {
-          var member = snapshot.val();
-          member.push(member.name);
-          member.push(member.chat);
-        });
-        member = arrayUnique(member);
-        console.log(member)
-        for (i = 0; i < member.length; i++) {
-          displayMember(member[i])
         }
       });
 
@@ -49,8 +36,8 @@ var myDataRef = new Firebase('https://blistering-heat-1919.firebaseio.com/');
         }
       });
 
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      function displayChatMessage(name, text, klass) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).addClass(klass).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
       };
 

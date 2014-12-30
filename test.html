@@ -1,79 +1,72 @@
 <html>
   <head>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/listmember.js" type="text/javascript" charset="utf-8"></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      .youcansee{
+        visibility: visible;
+      }
+      .youcantsee{
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
-    <!-- who are you?-->
-    <div id="checkwho" class="name">
-      <p>who are you?</p>
-      <input type='text' id='who' placeholder='Name'>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+          <a class="navbar-brand" href="#">Chat</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left" role="search" action="">
+            <div class="form-group">
+              <input type='text' id='who' class="form-control" placeholder='Name'>
+              <input type='password' id='passwd' class="form-control" placeholder='Passsword'>
+            </div>
+            <button class="btn btn-default" id="createaccount">Create Account</button>
+            <button class="btn btn-default" id="login">Login</button>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    
+    <div id="main_div" class="youcantsee">
+      <div class="col-md-4" style="padding-left: 5%; padding-top: 50px">
+
+        <!-- who are you?-->
+        <div id="memberlist" class="name">
+          <p>who you want to chat?</p>
+          <button id="listall" class="btn btn-default">List member</button>
+          <div id='memberDiv'></div>
+        </div>
+
+        <div id="chatwith" class="name">
+          <p>who you want to chat?</p>
+          <input type='text' id='chat' placeholder='Name'>
+        </div>
+
+
+      </div>
+      <div class="col-md-4" style="padding-left: 5%; padding-top: 50px">
+        <p>Those are your message</p>
+        <div id='messagesDiv'></div>
+        <input type='text' id='messageInput' placeholder='Message'>
+      </div>
+      <div class="col-md-4">
+      </div>
     </div>
-    
-    <!-- who are you?-->
-    <div id="chatwith" class="name">
-      <p>who you want to chat?</p>
-      <input type='text' id='chat' placeholder='Name'>
-    </div>
-   
-    
-    <p>Those are your message</p>
-    <div id='messagesDiv'></div>
-    <form action="test_submit" method="get" accept-charset="utf-8">
-      <input type='text' id='nameInput' placeholder='Name'>
-      <input type='text' id='messageInput' placeholder='Message'>
-    </form>
-    
-    
-    
-    
-    
     <!--js-->
-    <script>
-      var myDataRef = new Firebase('https://blistering-heat-1919.firebaseio.com/');
-      <!-- this is test -->
-      $('#who').keypress(function (e) {
-        if (e.keyCode == 13) {
-          myDataRef.on('child_added', function(snapshot) {
-            var message = snapshot.val();
-            if (message.name == $('#who').val()){
-              displayChatMessage(message.name, message.text);
-            }
-          });
-        }
-      });
-      
-      $('#chat').keypress(function (e) {
-        if (e.keyCode == 13) {
-          $('#messagesDiv').html('')
-          myDataRef.on('child_added', function(snapshot) {
-            var message = snapshot.val();
-            if (message.name == $('#who').val() && message.chat == $('#chat').val()){
-              displayChatMessage(message.name, message.text);
-            }
-          });
-        }
-      });
-      
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          var chat = $('#chat').val();
-          myDataRef.push({name: name, text: text, chat: chat});
-          $('#messageInput').val('');
-        }
-      });
-      myDataRef.on('child_added', function(snapshot) {
-        var message = snapshot.val();
-        if (message.name == $('#who').val() && message.chat == $('#chat').val()){
-          displayChatMessage(message.name, message.text);
-        }
-      });
-      function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      };
-    </script>
+
   </body>
 </html>

@@ -1,7 +1,10 @@
 <html>
   <head>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/parse/1.2.9/parse.min.js"></script>
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/listmember.js" type="text/javascript" charset="utf-8"></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -19,19 +22,19 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse">
           <form class="navbar-form navbar-left" role="" action="">
             <div class="form-group">
-              <input type='text' id='who' class="form-control" placeholder='Name'>
-              <input type='text' id='passwd' class="form-control" placeholder='Passsword'>
+              <input type='text' id='who' placeholder='Name'>
+              <input type='password' id='passwd' placeholder='Passsword'>
             </div>
-            <button class="btn btn-default" id="createaccount">Create Account</button>
-            <button class="btn btn-default" id="login_123">Login</button>
+            <div class="btn" id="create_mycount">Create Account</div>
+            <div class="btn" id="login_123">Login</div>
           </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    
+
     <div id="main_div" class="youcantsee">
       <div class="col-md-4" style="padding-left: 5%; padding-top: 50px">
 
@@ -49,15 +52,15 @@
 
 
       </div>
-      <div class="col-md-4" style="padding-left: 5%; padding-top: 50px">
+      <div class="col-md-4" style="padding-left: 5%; padding-top: 50px;">
         <p class="sub_title">Message</p>
         <div id='messagesDiv'></div>
-        <input type='text' id='messageInput' placeholder='Message'>
+        <div>
+          <input type='text' id='messageInput' placeholder='Message' style='position: relative; top:10px; float: right; right: 20'>
+        </div>
       </div>
       <div class="col-md-4">
       </div>
     </div>
-    <!--js-->
-
   </body>
 </html>

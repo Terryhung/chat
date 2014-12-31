@@ -9,6 +9,7 @@
 .sub_title{
         font-size: 30px;
         font-family: "Hanzipen TC";
+        border-bottom: solid 1px black;
 }
 
 .sub_name{
@@ -17,14 +18,20 @@
 }
 
 .my_right{
-        padding-left: 100px;
+        text-align: right;
         color: #395f5f;
         font-family: "Century Gothic" Regular;
         font-size: 20px;
+
 }
 
 .my_left{
         color: #f5af78;
         font-family: "Century-Gothic";
         font-size: 20px;
+}
+
+#messagesDiv{
+        height: 300px;
+        overflow: auto;
 }

@@ -4,6 +4,7 @@
     <script src="https://cdn.jsdelivr.net/parse/1.2.9/parse.min.js"></script>
     <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/logout.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/listmember.js" type="text/javascript" charset="utf-8"></script>
     <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -30,6 +31,7 @@
             </div>
             <div class="btn" id="createaccount">Create Account</div>
             <div class="btn" id="login_123">Login</div>
+            <div class="btn" id="logout">Logout</div>
           </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -45,6 +47,12 @@
           <div id='memberDiv'></div>
         </div>
 
+        <div id="memberlist_offline" class="name">
+          <p class="sub_title">Offline</p>
+          <button id="listall_offline" class="btn btn-default">List member</button>
+          <div id='memberDiv_offline'></div>
+        </div>
+        
         <div id="chatwith" class="name">
           <p>who you want to chat?</p>
           <input type='text' id='chat' placeholder='Name'>

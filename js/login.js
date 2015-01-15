@@ -11,17 +11,18 @@ $(document).ready(function() {
             var name = $('#who').val();
             var pw = $('#passwd').val();
 
+            alert("Checking....");
             for (i = 0; i < member.length; i++) {
                   if (name == member[i]){
                         alert("You have to change name");
                         createable = 0;
                         break;
-                  }
-            }
+                  };
+            };
             if (createable == 1) {
                   my_login_ref.push({name: name, password: pw});
                   alert("Success");
-            }
+            };
       });
 
       $('#login_123').click(function() {
@@ -31,10 +32,18 @@ $(document).ready(function() {
             my_login_ref.on('child_added', function(snapshot) {
                   var member_info = snapshot.val();
                   if(name == member_info.name && pw == member_info.password){
-                        $('#main_div').removeClass('youcantsee').addClass('youcansee');
                         unloginable = 0;
                   };
             });
+
+            alert("Check...");
+            if (unloginable == 1){
+                  alert("Wrong Password or Name");
+            }
+            else{
+                  $('#main_div').removeClass('youcantsee').addClass('youcansee');
+                  my_login_ref.child(name).set({state:"on"});
+            };
       });
 
 });

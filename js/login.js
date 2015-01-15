@@ -3,12 +3,10 @@ $(document).ready(function() {
       $('#createaccount').click(function() {
             var member = [];
             var createable = 1;
-            setTimeout(function(){
-            console.log("THIS IS");
-            }, 2);
+
             my_login_ref.on('child_added', function(snapshot) {
                   var data_info = snapshot.val();
-                  member.push(data_info.name)
+                  member.push(data_info.name);
             });
             var name = $('#who').val();
             var pw = $('#passwd').val();

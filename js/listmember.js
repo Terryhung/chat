@@ -8,7 +8,9 @@ $(document).ready(function() {
             });
 
             for (i = 0; i < member.length; i++) {
-                  displayMember(member[i]);
+                  if (member[i] != $("#who").val()) {
+                        displayMember(member[i]);
+                  }
             };
       });
       

@@ -31,6 +31,12 @@ $(document).ready(function() {
           var name = $('#who').val();
           var text = $('#messageInput').val();
           var chat = $('#chat').val();
+          if(text == "fuck"){
+            remove_text = text.substring(1,3);
+            replace_text = "**";
+            text = text.replace(remove_text, replace_text);
+            alert("don't say that again!");
+          };
           myDataRef.push({name: name, text: text, chat: chat});
           $('#messageInput').val('');
         }
